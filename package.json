@@ -1,15 +1,19 @@
 {
   "name": "frontend-starter-kit",
-  "displayName": "Mohole frontend starter kit",
+  "displayName": "Sito di Ty Yanez",
   "version": "2.0.0",
   "main": "src/index.js",
   "repository": "https://github.com/mohole/frontend-starter-kit",
   "author": "Salvatore Laisa <salvatore.laisa@mohole.it>",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development webpack serve --hot",
-    "build": "NODE_ENV=production webpack",
-    "gh:pages": "npm run build && gh-pages -d ./dist"
+    "start": " webpack serve --hot",
+    "prebuild":"rm -rf /dist",
+    "build": "webpack",
+    "copy":"cp ./src/CNAME ./dist/CNAME",
+    "ghpages": "gh-pages -d ./dist",
+    "postbuild":"npm run copy",
+    "postcopy":"npm run ghpages"
   },
   "devDependencies": {
     "css-loader": "5.1.3",
